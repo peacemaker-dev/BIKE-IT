@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | BIKE-IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="logo" loading="lazy" />
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Book Delivery</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Track Package</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content about-page">
+    <section class="hero about-hero">
+      <h1>About</h1>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="hero-logo" loading="lazy" width="130">
+      <p>Revolutionizing local delivery cleaner, quicker, and community focused.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>🚀 Our Mission</h2>
+      <p>To deliver local packages fast, affordably, and sustainably empowering businesses and individuals while reducing our environmental footprint.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>❓ Why Choose Us</h2>
+      <p>We're not just another delivery service. We're fast, eco-friendly, and hyper-local. Our bike couriers navigate traffic with ease, and our customer service is personalized and responsive.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>🔧 How We Work</h2>
+      <p>Once your booking is confirmed, we assign a nearby rider. They collect your package and deliver it in real time. You can track everything online, and updates are sent to your device automatically.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>💡 Our Values</h2>
+      <ul>
+        <li>Sustainability First</li>
+        <li>Speed with Purpose</li>
+        <li>Trust & Transparency</li>
+        <li>Community Empowerment</li>
+      </ul>
+    </section>
+
+    <section class="about-section">
+      <h2>🎯 Vision</h2>
+      <p>To become the go-to delivery partner for local businesses across the country while promoting clean urban mobility through bicycle logistics.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>🌍 Community Impact</h2>
+      <p>We provide jobs to local riders, reduce congestion, and partner with small businesses to improve their last-mile reach. Our impact is felt where it matters on the ground, in real time.</p>
+    </section>
+
+    <section class="about-section contact-section">
+      <h2>📞 Contact Us</h2>
+      <p>Email: support@bike-it.co.za<br />
+         WhatsApp: +27 62 256 3281<br />
+         Location: Durban Central, KZN</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BIKE-IT | Powered by Peacemaker Dev</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.add('show');
+      document.body.classList.add('menu-open');
+    });
+
+    document.body.addEventListener('click', function (e) {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  </script>
+</body>
+</html>

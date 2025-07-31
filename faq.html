@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs | BIKE-IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="logo" loading="lazy" />
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Book Delivery</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Track Package</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero faq-hero">
+      <h1>Frequently Asked Questions</h1>
+      <p>Get answers to common questions about our service.</p>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq">
+        <h3>How fast is the delivery? <span>+</span></h3>
+        <p>Most deliveries within the city are completed within 60 minutes from pickup.</p>
+      </div>
+      <div class="faq">
+        <h3>What can I send with BIKE-IT? <span>+</span></h3>
+        <p>We handle small parcels, envelopes, food packages, and documents up to 10kg.</p>
+      </div>
+      <div class="faq">
+        <h3>How do I track my delivery? <span>+</span></h3>
+        <p>After booking, you’ll receive a tracking link to monitor your parcel in real-time.</p>
+      </div>
+      <div class="faq">
+        <h3>Is it safe to send valuable items? <span>+</span></h3>
+        <p>We treat all deliveries with care. However, we recommend insuring valuable items.</p>
+      </div>
+      <div class="faq">
+        <h3>Where do you operate? <span>+</span></h3>
+        <p>Currently available in Durban central and surrounding areas. Expansion is coming soon.</p>
+      </div>
+      <div class="faq">
+        <h3>What if no one is there to receive the package? <span>+</span></h3>
+        <p>Our courier will contact the recipient. If undelivered, the item will be returned or rescheduled.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BIKE-IT | Powered by Peacemaker Dev</p>
+  </footer>
+
+  <script>
+    // Toggle menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.add('show');
+      document.body.classList.add('menu-open');
+    });
+
+    document.body.addEventListener('click', function (e) {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // FAQ toggle
+    const faqs = document.querySelectorAll('.faq');
+    faqs.forEach(faq => {
+      faq.querySelector('h3').addEventListener('click', () => {
+        faq.classList.toggle('open');
+        const sign = faq.querySelector('span');
+        sign.textContent = faq.classList.contains('open') ? '−' : '+';
+      });
+    });
+  </script>
+</body>
+</html>

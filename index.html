@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIKE-IT | Fast Local Delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="logo" loading="lazy">
+      <button class="menu-toggle" aria-label="Toogle menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="booking.html">Book Delivery</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Track Package</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="hero-logo" loading="lazy" width="130">
+      <div class="hero-content">
+        <h2>Fast. Eco-Friendly. Local.</h2>
+        <p>Deliver your small parcels across town quick, affordable & green.</p>
+        <a href="booking.html" class="cta-button">Book a Delivery</a>
+      </div>
+    </section>
+  </header>
+
+  <main class="main-content">
+    <section class="features">
+      <div>
+        <h3>🚴 Quick Delivery</h3>
+        <p>We guarantee rapid delivery using our bicycle courier team.</p>
+      </div>
+      <div>
+        <h3>🌍 Green Service</h3>
+        <p>No carbon footprint just clean, efficient transport.</p>
+      </div>
+      <div>
+        <h3>💬 Easy Booking</h3>
+        <p>Book in minutes via our simple online system or WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div>
+          <h3>📦 Step 1: Book</h3>
+          <p>Request a delivery via our website.</p>
+        </div>
+        <div>
+          <h3>🚲 Step 2: Pickup</h3>
+          <p>Our courier picks up your item within minutes.</p>
+        </div>
+        <div>
+          <h3>📍 Step 3: Deliver</h3>
+          <p>Track your package live as we deliver it to its destination.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BIKE-IT | Powered by Peacemaker Dev</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.add('show');
+      document.body.classList.add('menu-open');
+    });
+
+    document.body.addEventListener('click', function (e) {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  </script>
+</body>
+</html>
