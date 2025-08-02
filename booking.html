@@ -13,9 +13,9 @@
       <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
       <ul class="menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="booking.html">Book Delivery</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Track Package</a></li>
+        <li><a href="booking.html" class="active">➤ Book Delivery</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="tracking.html">Track Package</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQs</a></li>
@@ -25,9 +25,13 @@
 
   <div class="container">
     <h2>📦 Book Your Delivery</h2>
+      <p class="booking-info-note">
+        💡 For delivery prices and coverage areas, please visit our 
+        <a href="pricing.html">Pricing Page</a>.
+      </p>
     <form id="deliveryForm" autocomplete="off">
       <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" required minlength="2" pattern="[A-Za-z\s]+" />
 
       <label for="pickup">Pickup Address:</label>
       <input type="text" id="pickup" name="pickup" required>
@@ -39,7 +43,12 @@
       <textarea id="package" name="package" rows="3" required></textarea>
 
       <label for="contact">Your Phone Number:</label>
-      <input type="tel" id="contact" name="contact" required>
+      <input type="tel" name="number" id="number" required 
+                pattern="^0[6-8][0-9]{8}$" 
+                placeholder="e.g. 0712345678"
+                title="Enter a valid South African number e.g. 0712345678"/>
+
+      <p id="deliveryId"><strong>Your Delivery ID:</strong> <span id="deliveryIdDisplay">Generating...</span></p>
 
       <button type="submit">Send via WhatsApp</button>
     </form>
@@ -50,6 +59,23 @@
   </footer>
 
   <script>
+    // Generate a delivery ID like #AB123
+    function generateDeliveryId() {
+      const letter1 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+      const letter2 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+      const number = Math.floor(Math.random() * 900) + 100; // 100-999
+      return `#${letter1}${letter2}${number}`;
+    }
+
+    let currentDeliveryId = '';
+
+    // Show a new delivery ID on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      currentDeliveryId = generateDeliveryId();
+      document.getElementById('deliveryIdDisplay').textContent = currentDeliveryId;
+    });
+
+    // Your form submit handler
     document.getElementById("deliveryForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -57,13 +83,23 @@
       const pickup = document.getElementById("pickup").value.trim();
       const dropoff = document.getElementById("dropoff").value.trim();
       const packageDetails = document.getElementById("package").value.trim();
-      const contact = document.getElementById("contact").value.trim();
+      const contact = document.getElementById("number").value.trim();
 
-      const phoneNumber = "27712345678"; // Change to your WhatsApp business number
+      const phoneNumber = "27791681131"; // Your WhatsApp business number
 
-      const message = `Hello BIKE-IT! I'd like to book a delivery.\n\nName: ${name}\nPickup: ${pickup}\nDrop-off: ${dropoff}\nPackage: ${packageDetails}\nPhone: ${contact}`;
-      
+      const message = `Hello BIKE-IT! I'd like to book a delivery.\n\n` +
+                      `Delivery ID: ${currentDeliveryId}\n` +
+                      `Name: ${name}\n` +
+                      `Pickup: ${pickup}\n` +
+                      `Drop-off: ${dropoff}\n` +
+                      `Package: ${packageDetails}\n` +
+                      `Phone: ${contact}`;
+
       window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+
+    // Optional: Generate a new delivery ID for the next booking
+      currentDeliveryId = generateDeliveryId();
+      document.getElementById('deliveryIdDisplay').textContent = currentDeliveryId;
     });
 
     // Mobile menu toggle

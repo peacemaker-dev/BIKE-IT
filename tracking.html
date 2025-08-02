@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Package | BIKE-IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="logo" loading="lazy" />
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Book Delivery</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="track.html" class="active">➤ Track Package</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero track-hero">
+      <h1>Track Your Package</h1>
+      <p>Enter your details below. We'll send you tracking info via WhatsApp.</p>
+    </section>
+
+    <section class="track-section">
+      <form id="trackingForm" class="track-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required placeholder="John Doe" />
+
+        <label for="number">Your Phone Number</label>
+        <input type="tel" name="number" id="number" required 
+                pattern="^0[6-8][0-9]{8}$" 
+                placeholder="e.g. 0712345678"
+                title="Enter a valid South African number e.g. 0712345678" />
+
+        <label for="code">Delivery ID</label>
+        <input type="text" id="code" required placeholder="E.g: #AB123"/>
+
+        <label for="details">Order Reference / Info</label>
+        <textarea id="details" required placeholder="E.g: Booked at 11:00 from Ext 6 to Town, fragile item"></textarea>
+
+        <button type="submit" class="cta-button-track">📲 Send via WhatsApp</button>
+      </form>
+
+      <p class="info-note">💬 We're available from <strong>07:00 to 19:00</strong>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BIKE-IT | Powered by Peacemaker Dev</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      document.body.classList.toggle('menu-open');
+    });
+
+    document.body.addEventListener('click', function (e) {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    const form = document.getElementById("trackingForm");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("number").value.trim();
+  const code = document.getElementById("code").value.trim();
+  const details = document.getElementById("details").value.trim();
+
+  if (!name || !phone || !code || !details) {
+    alert("Please fill in all fields before submitting.");
+    return;
+  }
+
+  // Use \n for new lines here:
+  const message = `Hi BIKE-IT, I would like to track my delivery.\n\n` +
+                  `Name: ${name}\n` +
+                  `Phone: ${phone}\n` +
+                  `Delivery ID: ${code}\n` + 
+                  `Details: ${details}`;
+
+  const whatsappURL = `https://wa.me/27791681131?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, "_blank");
+});
+
+  </script>
+</body>
+</html>

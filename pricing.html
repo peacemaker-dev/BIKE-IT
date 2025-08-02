@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing | BIKE-IT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="images/transparent-logo.png" alt="BIKE-IT Logo" class="logo" loading="lazy" />
+      <button class="menu-toggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">&#9776;</button>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Book Delivery</a></li>
+        <li><a href="pricing.html" class="active">➤ Pricing</a></li>
+        <li><a href="tracking.html">Track Package</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero pricing-hero">
+      <h1>Delivery Pricing - Standerton</h1>
+      <p>Clear pricing based on your delivery location.</p>
+    </section>
+
+    <section class="pricing-section">
+      <div class="pricing-cards">
+        <div class="card">
+          <h3>🚲 Same Area</h3>
+          <p><strong>R15</strong></p>
+          <p class="small">Example: Ext 6 ➝ Ext 6</p>
+        </div>
+        <div class="card">
+          <h3>🚲 Nearby Zones</h3>
+          <p><strong>R20</strong></p>
+          <p class="small">Example: Ext 7 ➝ RDP</p>
+        </div>
+        <div class="card">
+          <h3>🚲 Town Trips</h3>
+          <p><strong>R50</strong></p>
+          <p class="small">Town ➝ Your Location or vice versa</p>
+        </div>
+      </div>
+
+      <p class="tip-note">☔ Rainy day? Riders appreciate a R5 tip — it keeps them safe and motivated.</p>
+    </section>
+
+    <section class="pricing-section">
+      <h3>We Deliver To</h3>
+      <ul class="delivery-areas">
+        <li>📍 Town</li>
+        <li>📍 Ext 1</li>
+        <li>📍 Ext 6</li>
+        <li>📍 Ext 7</li>
+        <li>📍 Ext 8</li>
+        <li>📍 Vodacom</li>
+        <li>📍 Mahala Park</li>
+        <li>📍 RDP</li>
+      </ul>
+
+      <p class="tip-note">If your area isn't listed or if the delivery is far, contact us for a custom price.</p>
+
+      <a href="booking.html" class="cta-button">📲 Request a Biker</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BIKE-IT | Powered by Peacemaker Dev</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      document.body.classList.toggle('menu-open');
+    });
+
+    document.body.addEventListener('click', function (e) {
+      if (
+        document.body.classList.contains('menu-open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        navMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  </script>
+</body>
+</html>
